@@ -1,0 +1,323 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#141b19"><title>출튀 대작전 — CAMPUS ESCAPE</title><style>
+*{box-sizing:border-box}body{margin:0;background:#111816;color:#eef1dc;font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif}button{font:inherit;cursor:pointer}header{max-width:1220px;margin:auto;padding:25px 28px;border-bottom:1px solid #34423a;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:900;letter-spacing:-1px}.brand span{color:#d6fa72}.tag{font-size:11px;letter-spacing:2px;color:#92a397}main{max-width:1220px;margin:38px auto;padding:0 28px}.top{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}.eyebrow{color:#d6fa72;font-size:11px;letter-spacing:3px}h1{font-size:46px;letter-spacing:-3px;margin:8px 0}h1 em{font-style:normal;color:#d6fa72}.sub{color:#9aab9d;font-size:13px}.pill{border:1px solid #4a5948;border-radius:30px;padding:9px 15px;font-size:12px;color:#d6fa72}.layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:22px}.board{border:1px solid #425044;border-radius:14px;overflow:hidden;background:#26382c;position:relative}.bar{display:flex;justify-content:space-between;padding:15px 20px;background:#1b2720;font-size:12px;border-bottom:1px solid #43513f}.bar b{color:#d6fa72}canvas{display:block;width:100%;aspect-ratio:760/560;touch-action:none}.overlay{position:absolute;inset:49px 0 0;display:flex;align-items:center;justify-content:center;background:#101a15b8;backdrop-filter:blur(4px);text-align:center;padding:25px}.overlay.hidden{display:none}.modal{max-width:400px}.sticker{display:inline-block;background:#d6fa72;color:#1a2418;font-size:11px;font-weight:900;padding:6px 12px;transform:rotate(-4deg)}h2{font-size:36px;letter-spacing:-2px;margin:20px 0 12px}.modal p{color:#c0cbb9;font-size:13px;line-height:1.9}.primary{background:#d6fa72;border:0;color:#192116;padding:15px 30px;border-radius:7px;font-weight:900;width:100%;margin-top:13px}.primary:hover{background:#e5ff9b}.side{display:flex;flex-direction:column;gap:16px}.card{border:1px solid #36463b;background:#1a251f;border-radius:12px;padding:21px}.card h3{font-size:13px;margin:0 0 19px}.small{font-size:10px;color:#91a08e;letter-spacing:2px}.timer{font-size:42px;font-weight:900;margin:2px 0}.meter{height:7px;background:#3a4536;border-radius:9px;overflow:hidden;margin:11px 0}.meter i{display:block;background:#d6fa72;height:100%;width:0}.row{display:flex;justify-content:space-between;font-size:12px;color:#aebaa8}.mission{font-size:13px;color:#a5b49f;line-height:2.3}.mission.active{color:#d6fa72}.key{display:inline-flex;align-items:center;justify-content:center;border:1px solid #5b6856;border-bottom:3px solid #5b6856;border-radius:5px;padding:2px 7px;color:#e5eacd;font-size:11px}.help{font-size:12px;line-height:2.5;color:#a7b49f}.note{font-size:11px;line-height:1.8;color:#849880}.bottom{display:flex;justify-content:space-between;margin-top:16px;color:#7d907f;font-size:11px}.controls{display:none;gap:8px;justify-content:center;margin-top:16px}.controls button{background:#2c3c2e;color:#e8efcf;border:1px solid #56684a;border-radius:8px;padding:14px;touch-action:none}.controls .hide{background:#d6fa72;color:#1c2517}footer{margin:35px 0;font-size:10px;color:#667c6b;letter-spacing:2px}.pause{background:none;border:0;color:#aebba6;font-size:12px}@media(max-width:850px){.layout{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr}.side .card:last-child{grid-column:1/-1}.top .pill{display:none}h1{font-size:36px}.controls{display:flex}main{margin-top:25px;padding:0 16px}header{padding:20px 16px}.tag{font-size:9px}.card{padding:17px}.bottom{line-height:1.8;gap:15px}}
+
+.rank-panel{border:1px solid #40513d;background:#1a251f;border-radius:14px;margin-top:32px;padding:25px}.rank-top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}.rank-top h2{font-size:25px;margin:5px 0}.rank-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:20px 0}.rank-tabs button,.rank-secondary{background:#26372b;color:#c7d5b4;border:1px solid #4e6245;border-radius:7px;padding:10px 15px}.rank-tabs .selected{background:#d6fa72;color:#1b2816;border-color:#d6fa72}.rank-table-wrap{overflow-x:auto}.rank-table{border-collapse:collapse;width:100%;min-width:460px;font-size:13px}.rank-table th{text-align:left;color:#92a78d;font-weight:400;font-size:11px;padding:12px;border-bottom:1px solid #45533e}.rank-table td{padding:15px 12px;border-bottom:1px solid #30402f}.rank-table td:first-child{color:#d6fa72;font-weight:900}.rank-message{font-size:12px;line-height:1.9;color:#aabc9c;margin-top:15px}.score-form{margin:16px 0;text-align:left;border:1px solid #607249;border-radius:9px;padding:14px;background:#1a291f}.score-form[hidden]{display:none}.overlay{overflow-y:auto;align-items:flex-start}.modal{margin:auto}.score-form label{font-size:12px;display:block;margin-bottom:8px}.score-form input{width:100%;padding:11px;border:1px solid #647a50;border-radius:6px;background:#111d16;color:#f0f5dc;font:inherit}.score-form button{margin-top:9px;padding:11px}.score-form small{display:block;font-size:10px;line-height:1.8;color:#bdcbb0;margin-top:9px}button:disabled{opacity:.5;cursor:wait}#run-kind{color:#8da47e;font-size:10px}.rank-mine{color:#d6fa72;font-size:12px;margin-top:12px}@media(max-width:850px){.rank-panel{padding:17px}.rank-tabs button{padding:9px 12px}.modal h2{font-size:28px}.overlay{overflow:auto;align-items:flex-start}.modal{margin:auto}}
+.mode-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}.mode-controls label,.rank-mode-control label{font-size:12px;color:#b0c39e}select{font:inherit;background:#24362a;border:1px solid #5b714b;border-radius:7px;color:#e8efce;padding:10px;max-width:100%}.rank-mode-control{display:flex;align-items:center;gap:12px;margin-top:20px;flex-wrap:wrap}.mechanic-banner{padding:13px 17px;margin-bottom:15px;background:#403521;color:#ffe1a1;border:1px solid #8b7444;border-radius:9px;font-size:12px;line-height:1.9}
+</style><header><div class="brand"><span>↗</span> 출튀 대작전</div><div class="tag">CAMPUS ESCAPE CLUB · EST. 2026</div></header><main><section class="top"><div><div class="eyebrow">THE QUIETEST GREAT ESCAPE</div><h1>출석은 했고,<br>이제 <em>탈출할 시간.</em></h1><div class="sub">교수님이 돌아보기 전에, 당신의 자유를 되찾으세요.</div></div><div class="pill">● 1인용 잠입 아케이드</div></section><div class="mode-controls"><label for="play-mode">다음 도전 모드</label><select id="play-mode"><option value="normal">일반 모드 · 매번 무작위</option><option value="fixed">기록 모드 · 고정 패턴</option><option value="daily">오늘의 출튀 · 오늘의 공통 패턴</option></select><button id="continue-campaign" class="rank-secondary">일반 모드 이어하기 ↗</button><span id="campaign-progress" class="note">첫 완주 목표 30~60분 · 1/10단계</span></div><div id="mechanic-status" class="mechanic-banner" role="status" style="display:none"></div><div class="layout"><div><div class="board"><div class="bar"><span id="level">STAGE 01 · 월요일 1교시</span><button class="pause" id="pause">Ⅱ 일시정지</button></div><canvas id="game" width="760" height="560" aria-label="강의실 탈출 게임"></canvas><div class="overlay" id="overlay"><div class="modal"><span class="sticker">출석만 하고 가겠습니다</span><h2 id="title">교수님 몰래, 출튀!</h2><p id="message">출석부 앞에서 E를 1초 눌러 출석하고 탈출하세요.<br>출석·가방·수색·문 행동 중 보이면 즉시 탈락!<br>돌아볼 타이밍과 방향은 무작위 · 1초 전 경고!<br>총 10단계 · 소음, 순찰, 조교까지 피해 탈출하세요!</p><form id="score-form" class="score-form" hidden><label for="nickname">순위표에 표시할 닉네임</label><input id="nickname" minlength="2" maxlength="16" required autocomplete="nickname" placeholder="닉네임 2~16자"><button class="primary" id="submit-score" type="submit">이 단계 기록 등록</button><small id="score-status" role="status"></small><small>닉네임·점수·남은 시간·등록일이 공개됩니다.<br>같은 브라우저의 단계별 최고점만 순위에 반영됩니다.</small></form><button class="primary" id="start">작전 시작하기　↗</button><p style="font-size:10px">WASD 이동 · SPACE 숨기 · E 출석 / 가방 / 수색 / 문 · P 일시정지</p></div></div></div><div class="controls"><button data-key="a">←</button><button data-key="w">↑</button><button data-key="s">↓</button><button data-key="d">→</button><button class="hide" data-key=" ">숨기</button><button class="hide" data-key="e">E 행동</button></div><div id="run-kind" style="margin-top:12px">일반 모드 · 순위 경쟁은 기록 모드 또는 오늘의 출튀에서 도전</div><div class="bottom"><span>● 초록색이 당신입니다. 침착하게 움직이세요.</span><span id="best">BEST —</span></div></div><aside class="side"><div class="card"><div class="small">TIME LEFT</div><div class="timer" id="time">60<span style="font-size:16px">.0</span></div><div class="row"><span>교수님 의심도</span><b id="risk">0%</b></div><div class="meter"><i id="meter"></i></div><div class="note" id="status">아직은 평화로운 강의실.</div></div><div class="card"><h3>이번 작전</h3><div class="mission active" id="m1">①　출석부 처리 · E 1초</div><div class="mission" id="m2">②　뒷문으로 탈출하기</div><div class="mission" id="m3" style="display:none"></div><div class="mission" id="m4" style="display:none">④　EXIT로 탈출하기</div><div class="mission" id="m5" style="display:none"></div><div class="mission" id="m6" style="display:none"></div><div class="note" id="warning" role="status" style="color:#ffad82;margin-top:14px">교수님 주변 붉은 원 접근 금지</div><div class="note" id="action" aria-live="polite" style="color:#d6fa72;margin-top:14px">출석부 → EXIT</div><div class="note" style="margin-top:15px">1단계 · 출석 후 탈출<br>2단계 · 가방 챙기기 추가<br>3단계 · 문 열기 타이밍 추가<br>4단계 · 잠긴 문과 숨겨진 열쇠 (90초)<br>5단계 · 책상 복귀로 교수 추적 풀기<br>6단계 · 움직이는 시야 + 지속 추적<br>7단계 · 숨겨지는 소음 함정 / 8단계 · 교수 순찰<br>9단계 · 이동하는 조교 / 10단계 · 종합 탈출</div></div><div class="card"><h3>생존 가이드</h3><div class="help"><span class="key">W A S D</span> / <span class="key">↑ ↓ ← →</span> 이동<br><span class="key">SPACE</span> 책상 근처에서 숨기<br><span class="key">E</span> 길게 눌러 출석 / 가방 / 수색 / 문<br><span class="key">P</span> 잠깐 쉬기</div><p class="note">출석: 왼쪽 위에서 E 1초.<br>가방: 출석 후 내 자리에서 E 2초.<br>3단계부터 문: 초록 신호에 E 1.2초.<br>4단계: 가방 후 A·B·C 책상 E 1초 수색.<br>열쇠 획득 후 문 앞 E 0.8초 잠금 해제.<br>행동 중 시야에 들어오면 즉시 탈락!<br>붉은 원 안은 방향과 관계없이 즉사.<br>점선은 1초 뒤 감시할 무작위 방향.<br>칠판 보는 시간·감시 시간도 매번 무작위.<br>시야 밖 위험 신호 문 열기는 의심 +25%.<br>행동을 멈추면 진행도가 초기화돼요.<br>5~6단계: 출석만 처리하면 탈출 가능.<br>시야에 잡히면 책상 앞 초록 영역으로!<br>복귀 전까지 의심 +22%/초 · 추적 중 탈출 불가.<br>6단계부터 점선: 시야가 훑을 전체 범위.<br>감시 중 노란 시야가 좌우로 이동합니다.<br>7·10단계: 함정 8곳이 시작 전 3초만 깜빡입니다.<br>이후 보이지 않아도 소음 판정은 남아요.<br>8·10단계: 교수의 붉은 순찰 경로를 확인!<br>9단계: 조교가 이동하면서 감시합니다.<br>1초 전 파란 이동 경로를 확인하세요.<br>10단계: 출석 후 문 열기 E 1.2초 추가.</p></div></aside></div><section class="rank-panel" id="ranking-panel" aria-label="단계별 온라인 순위표"><div class="rank-top"><div><div class="eyebrow">STAGE LEADERBOARDS</div><h2>출튀의 고수를 찾습니다.</h2><div class="sub">10단계별로 따로 경쟁하세요. 고정 패턴 / 오늘의 공통 패턴 기록은 분리됩니다.</div></div><button class="rank-secondary" id="refresh-ranks">↻ 새로고침</button></div><div class="rank-mode-control"><label for="rank-mode">순위표 종류</label><select id="rank-mode"><option value="fixed">기록 모드 · 고정 패턴</option><option value="daily">오늘의 출튀 · 한국 시간 매일 갱신</option></select></div><div class="rank-tabs" role="group" aria-label="순위표 단계 선택"><button data-rank-stage="1" aria-pressed="false">1단계</button><button data-rank-stage="2" aria-pressed="false">2단계</button><button data-rank-stage="3" aria-pressed="false">3단계</button><button data-rank-stage="4" aria-pressed="false">4단계</button><button data-rank-stage="5" aria-pressed="false">5단계</button><button data-rank-stage="6" aria-pressed="false">6단계</button><button data-rank-stage="7" aria-pressed="false">7단계</button><button data-rank-stage="8" aria-pressed="false">8단계</button><button data-rank-stage="9" aria-pressed="false">9단계</button><button data-rank-stage="10" aria-pressed="false">10단계</button></div><div class="rank-top"><h3 id="rank-heading">1단계 TOP 20</h3><button class="rank-secondary" id="rank-stage-play">1단계 바로 도전 ↗</button></div><div class="rank-table-wrap"><table class="rank-table"><thead><tr><th>순위</th><th>닉네임</th><th>점수</th><th>남은 시간</th><th>등록일</th></tr></thead><tbody id="rank-rows"></tbody></table></div><div id="rank-message" class="rank-message" role="status">기록을 불러오는 중…</div><div id="my-rank" class="rank-mine"></div><p class="note">기억형 함정 시즌 · 10단계 / 이전 기록은 보존되며 새 순위와 분리됩니다.<br>점수 = 남은 시간 × 100 + 단계 × 200 · 단계별 개인 최고점 1개 반영<br>로그인 없이 등록할 수 있습니다. 내 기록은 브라우저 쿠키로 구분되며 쿠키를 지우면 새 플레이어로 처리됩니다.</p></section><footer>A SMALL ESCAPE FROM A VERY LONG LECTURE.</footer></main><script>
+function seededRandom(seed){let state=seed>>>0;return ()=>{state=(state+0x6D2B79F5)>>>0;let t=state;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return ((t^(t>>>14))>>>0)/4294967296}}
+let gameplayRandom=Math.random;
+const STAGE_NAMES=['','월요일 1교시','화요일 전공필수','금요일 보강수업','잠긴 강의실','자리로 돌아가세요','움직이는 시선','삐걱이는 바닥','순찰하는 교수','조교의 감시','기말고사 대탈출'];
+let introLeft=0;
+let lastNoiseAt=-10,noisePoint=null,patrolPhase='idle',patrolEnds=5,patrolFrom=380,patrolTarget=220,patrolStarted=0,campaignCleared=0;
+try{campaignCleared=Math.max(0,Math.min(10,Number(localStorage.getItem('campusCampaign')||0)))}catch{}
+const c=document.getElementById('game'),ctx=c.getContext('2d'),$=id=>document.getElementById(id),keys={};let stage=1,mode='intro',time=60,risk=0,stamp=false,p={x:380,y:485},elapsed=0,last=0,bag=false,bagProgress=0,door=false,doorProgress=0,doorMistake=false,hint='',hintTime=0,stampProgress=0,encounterIndex=0,lookAngle=Math.PI/2,lookDirection='↓ 중앙',phaseState='board',phaseEnds=3,hasKey=false,keySpot=0,searched=new Set(),searchProgress=0,searchIndex=-1,unlocked=true,unlockProgress=0,pursued=false,refugeDesk=-1,watchStarted=0,sweepStart=.4,sweepEnd=2.7,best=0;try{best=Number(localStorage.getItem('escapeBest')||0)}catch{}if(best)$('best').textContent='BEST '+best+'점';
+const desks=[];for(let y=215;y<=395;y+=90)for(let x=100;x<=580;x+=160)desks.push({x,y,w:100,h:42});
+function inDeskFront(d,margin=0){return !!d&&Math.abs(p.x-(d.x+d.w/2))<=38+margin&&p.y>=d.y+d.h+13-margin&&p.y<=d.y+d.h+40+margin}
+function deskFrontIndex(){return desks.findIndex(d=>inDeskFront(d))}
+function atDeskFront(){return inDeskFront(desks[refugeDesk],8)||deskFrontIndex()>=0}
+function usesPursuit(){return stage>=5}
+function needsBag(){return stage>=2&&stage<=4}
+function needsDoor(){return stage===3||stage===4||stage===10}
+function hasNoise(){return stage===7||stage===10}
+function hasPatrol(){return stage===8||stage===10}
+function hasAssistant(){return stage===9}
+function stageSeconds(){return stage===4||stage===10?90:stage>=7?75:60}
+function nearDesk(){return desks.some(d=>p.x>d.x-25&&p.x<d.x+d.w+25&&p.y>d.y-25&&p.y<d.y+d.h+25)}
+const professor={x:380,y:125,radius:72},viewHalfAngle=.56;
+function randomBetween(min,max){return min+gameplayRandom()*(max-min)}
+function boardDuration(){return stage>=7?randomBetween(3,5):randomBetween(2.8-stage*.12,5.2-stage*.18)}
+function watchDuration(){return stage>=7?randomBetween(1.5,3):randomBetween(1.2+stage*.1,2.8+stage*.2)}
+function phase(){return phaseState}
+function chooseLook(){
+ if(stage>=6){
+  const rightFirst=gameplayRandom()<.5;
+  sweepStart=rightFirst?randomBetween(.25,1):randomBetween(2.14,2.89);
+  sweepEnd=rightFirst?randomBetween(2.14,2.89):randomBetween(.25,1);
+  lookAngle=sweepStart;lookDirection=rightFirst?'↘ 오른쪽 → ↙ 왼쪽 훑기':'↙ 왼쪽 → ↘ 오른쪽 훑기';
+ }else{lookAngle=.15+gameplayRandom()*(Math.PI-.3);lookDirection=lookAngle<1.05?'↘ 오른쪽':lookAngle>2.09?'↙ 왼쪽':'↓ 중앙'}
+}
+function syncEncounter(){
+ while(elapsed>=phaseEnds){
+  if(phaseState==='board'){phaseState='warning';chooseLook();encounterIndex++;phaseEnds+=1}
+  else if(phaseState==='warning'){phaseState='watch';watchStarted=phaseEnds;phaseEnds+=watchDuration()}
+  else{phaseState='board';phaseEnds+=boardDuration()}
+ }
+}
+const noisyFloors=[{x:48,y:320,w:42,h:45},{x:365,y:263,w:50,h:35},{x:520,y:480,w:115,h:35},{x:690,y:270,w:26,h:42},{x:220,y:385,w:26,h:40},{x:365,y:420,w:50,h:26},{x:275,y:270,w:70,h:20},{x:545,y:355,w:40,h:25}];
+function trapPreviewVisible(){return hasNoise()&&introLeft>0&&Math.floor((3-introLeft)*5)%2===0}
+function noisyAt(){return noisyFloors.some(f=>p.x>=f.x&&p.x<=f.x+f.w&&p.y>=f.y&&p.y<=f.y+f.h)}
+function triggerNoise(){
+ lastNoiseAt=elapsed;noisePoint={x:p.x,y:p.y};lookAngle=Math.atan2(p.y-professor.y,p.x-professor.x);sweepStart=lookAngle;sweepEnd=lookAngle;lookDirection='소음 발생 방향 확인';
+ phaseState='warning';phaseEnds=elapsed+1;toast('삐걱! 교수님이 1초 뒤 소리가 난 방향을 확인합니다.');
+}
+function syncPatrol(){
+ if(!hasPatrol())return;
+ while(elapsed>=patrolEnds){
+  if(patrolPhase==='idle'){patrolPhase='warning';patrolFrom=professor.x;patrolTarget=professor.x>=380?220:540;patrolEnds+=1.2}
+  else if(patrolPhase==='warning'){patrolPhase='move';patrolStarted=patrolEnds;patrolEnds+=3.5}
+  else{professor.x=patrolTarget;patrolPhase='idle';patrolEnds+=randomBetween(3,5)}
+ }
+ if(patrolPhase==='move'){const t=Math.max(0,Math.min(1,(elapsed-patrolStarted)/(patrolEnds-patrolStarted)));professor.x=patrolFrom+(patrolTarget-patrolFrom)*(1-Math.cos(Math.PI*t))/2}
+}
+const assistant={x:705,y:350,angle:1.9,half:.36,range:185};
+function assistantPhase(){const n=elapsed%9.2;return n<3?'idle':n<4?'warning':n<6.4?'move':'watch'}
+function assistantRoute(){const cycle=Math.floor(elapsed/9.2);return cycle===0?{from:350,to:260}:cycle%2?{from:260,to:410}:{from:410,to:260}}
+function syncAssistant(){
+ if(!hasAssistant())return;
+ const n=elapsed%9.2,route=assistantRoute();
+ assistant.y=n<4?route.from:n>=6.4?route.to:route.from+(route.to-route.from)*(1-Math.cos(Math.PI*(n-4)/2.4))/2;
+ assistant.angle=Math.atan2(490-assistant.y,700-assistant.x);
+}
+function assistantSees(){if(!hasAssistant()||!['move','watch'].includes(assistantPhase()))return false;const dx=p.x-assistant.x,dy=p.y-assistant.y,a=Math.atan2(dy,dx)-assistant.angle;return Math.hypot(dx,dy)<=assistant.range&&Math.abs(Math.atan2(Math.sin(a),Math.cos(a)))<=assistant.half}
+function drawMechanics(){
+ if(trapPreviewVisible())for(const f of noisyFloors){rect(f.x,f.y,f.w,f.h,'#b58a4677');ctx.save();ctx.strokeStyle='#edc273';ctx.lineWidth=2;for(let x=f.x+5;x<f.x+f.w;x+=12){ctx.beginPath();ctx.moveTo(x,f.y+5);ctx.lineTo(x,f.y+f.h-5);ctx.stroke()}ctx.restore();label('삐걱',f.x+f.w/2,f.y+f.h/2+4,'#ffe2a4',10)}
+ if(hasNoise()&&noisePoint&&elapsed-lastNoiseAt<1.4){ctx.save();ctx.strokeStyle='#ffd58b';ctx.lineWidth=2;ctx.beginPath();ctx.arc(noisePoint.x,noisePoint.y,22+(elapsed-lastNoiseAt)*25,0,Math.PI*2);ctx.stroke();ctx.restore()}
+ if(hasPatrol()&&(patrolPhase==='warning'||patrolPhase==='move')){ctx.save();ctx.strokeStyle='#ffad82';ctx.lineWidth=3;ctx.setLineDash([8,6]);ctx.beginPath();ctx.moveTo(patrolFrom,professor.y);ctx.lineTo(patrolTarget,professor.y);ctx.stroke();ctx.restore();label('순찰 '+(patrolTarget<patrolFrom?'← 왼쪽':'오른쪽 →'),(patrolFrom+patrolTarget)/2,professor.y-25,'#ffcda4',11)}
+ if(hasAssistant()){
+  const a=assistant,ph=assistantPhase();
+  if(ph==='warning'||ph==='move'){const route=assistantRoute();ctx.save();ctx.strokeStyle='#a6cfff';ctx.lineWidth=3;ctx.setLineDash([6,6]);ctx.beginPath();ctx.moveTo(a.x,route.from);ctx.lineTo(a.x,route.to);ctx.stroke();ctx.restore()}
+  if(ph!=='idle'){ctx.save();ctx.fillStyle=ph==='warning'?'#9dc5ff18':'#9dc5ff33';ctx.strokeStyle='#b4d3ff';ctx.setLineDash(ph==='warning'?[7,6]:[]);ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.arc(a.x,a.y,a.range,a.angle-a.half,a.angle+a.half);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore()}
+  person(a.x,a.y,'#9bbbe1');label(ph==='idle'?'조교 · 서류 확인':ph==='warning'?'! 조교 이동 예고':ph==='move'?'조교 · 이동하며 감시':'조교 · 문 감시 중',a.x-55,a.y-32,'#c4ddff',11);
+ }
+}
+function hudMechanics(){
+ $('campaign-progress').textContent='첫 완주 목표 30~60분 · 최고 도달 '+Math.min(10,campaignCleared+1)+'/10단계';
+ const messages=[];
+ if(hasNoise())messages.push(introLeft>0?'함정 8곳의 위치를 기억하세요 · '+Math.ceil(introLeft)+'초 뒤 표시가 사라지고 시작합니다':elapsed-lastNoiseAt<1?'⚠ 소음! 1초 뒤 확인 · 기억한 함정 위치를 피해 이동하세요':'함정 표시는 사라졌지만 8곳 모두 활성 상태입니다 · 기억한 안전 경로로 이동하세요');
+ if(hasPatrol())messages.push(patrolPhase==='warning'?'⚠ '+Math.max(0,patrolEnds-elapsed).toFixed(1)+'초 뒤 표시된 경로로 순찰':patrolPhase==='move'?'교수 순찰 중 · 붉은 근접 원을 피하세요':'교수 순찰 대기 · 이동 전에 경로를 예고합니다');
+ if(hasAssistant())messages.push(assistantPhase()==='idle'?'조교가 서류를 보는 중 · 문으로 이동할 기회':assistantPhase()==='warning'?'⚠ 조교가 1초 뒤 표시된 경로로 이동하며 감시합니다':assistantPhase()==='move'?'조교가 이동하며 감시 중 · 파란 시야를 피하세요':'조교가 문 감시 중 · 파란 범위도 지속 추적을 시작합니다');
+ $('mechanic-status').style.display=messages.length?'block':'none';$('mechanic-status').textContent=messages.join(' / ');
+}
+const searchSpots=[{x:150,y:280,name:'A 책상'},{x:470,y:370,name:'B 책상'},{x:310,y:465,name:'C 책상'}];
+function nearSearch(){return searchSpots.findIndex(spot=>Math.hypot(p.x-spot.x,p.y-spot.y)<32)}
+function actionKind(){
+ if(!stamp&&nearAttendance())return 'stamp';
+ if(needsBag()&&stamp&&!bag&&nearBag())return 'bag';
+ if(stage===4&&stamp&&bag&&!hasKey){const i=nearSearch();if(i>=0&&!searched.has(i))return 'search'}
+ if(needsDoor()&&stamp&&(!needsBag()||bag)&&!door&&nearExit()){
+  if(stage===4&&!unlocked)return hasKey?'unlock':null;
+  return 'door';
+ }
+ return null;
+}
+function nearAttendance(){return Math.hypot(p.x-101,p.y-131)<46}
+function performingAction(){return !!keys.e&&!!actionKind()}
+function hidden(){return !!keys[' ']&&nearDesk()&&!performingAction()}
+function caught(reason){mode='lose';risk=100;modal('교수에게 들켜 F학점을 받았습니다.',reason+'<br>시야 예고를 확인하고, 교수님 주변의 붉은 원을 피하세요.','다시 도전하기　↗')}
+
+const bagSpot={x:630,y:450};
+function nearBag(){return Math.hypot(p.x-bagSpot.x,p.y-bagSpot.y)<42}
+function nearExit(){return p.x>665&&p.y>440}
+function ready(){return stamp&&(!needsBag()||bag)&&(!needsDoor()||door)&&(stage!==4||(hasKey&&unlocked))&&(!usesPursuit()||!pursued)}
+function viewAngle(){
+ if(stage>=6&&phase()==='watch'){
+  const t=Math.max(0,Math.min(1,(elapsed-watchStarted)/Math.max(.001,phaseEnds-watchStarted)));
+  return sweepStart+(sweepEnd-sweepStart)*(1-Math.cos(Math.PI*t))/2;
+ }
+ return lookAngle;
+}
+function visionBounds(){return stage>=6&&phase()==='warning'?[Math.min(sweepStart,sweepEnd)-viewHalfAngle,Math.max(sweepStart,sweepEnd)+viewHalfAngle]:[viewAngle()-viewHalfAngle,viewAngle()+viewHalfAngle]}
+function inView(){const a=Math.atan2(p.y-professor.y,p.x-professor.x),delta=Math.atan2(Math.sin(a-viewAngle()),Math.cos(a-viewAngle()));return Math.abs(delta)<=viewHalfAngle}
+function boardLeft(){return phase()==='board'?Math.max(0,phaseEnds-elapsed):0}
+function toast(msg){hint=msg;hintTime=2}
+function reset(){
+ p={x:380,y:485};professor.x=380;professor.y=hasPatrol()?145:125;professor.radius=hasPatrol()?52:72;lastNoiseAt=-10;noisePoint=null;introLeft=hasNoise()?3:0;assistant.x=705;assistant.y=350;assistant.angle=Math.atan2(140,-5);patrolPhase='idle';patrolEnds=4;patrolFrom=380;patrolTarget=220;patrolStarted=0;time=stageSeconds();risk=0;pursued=false;refugeDesk=-1;stamp=false;stampProgress=0;encounterIndex=0;
+ elapsed=0;phaseState='board';phaseEnds=boardDuration();lookAngle=Math.PI/2;lookDirection='↓ 중앙';watchStarted=0;sweepStart=.4;sweepEnd=2.7;
+ Object.keys(keys).forEach(k=>keys[k]=false);bag=false;bagProgress=0;door=false;doorProgress=0;doorMistake=false;
+ hasKey=false;keySpot=Math.floor(gameplayRandom()*searchSpots.length);searched=new Set();searchProgress=0;searchIndex=-1;unlocked=stage!==4;unlockProgress=0;
+ hint=stage===10?'마지막 작전! 소음과 교수 순찰을 피해 출석하고, 초록 신호에 문을 여세요.':stage===9?'조교가 문 앞 통로를 이동하며 감시합니다. 파란 경로 예고와 움직이는 시야를 확인하세요.':stage===8?'교수님이 통로를 순찰합니다. 이동 경로를 확인하고 붉은 원을 피하세요.':stage===7?'시작 전 3초간 깜빡이는 함정 8곳을 기억하세요. 시작 후에는 보이지 않지만 소음 판정은 유지됩니다.':stage>=6?'교수님 시야가 감시 중에도 움직입니다. 점선은 전체 훑기 범위이며, 잡히면 초록 책상 앞으로 복귀하세요.':usesPursuit()?'시야에 잡히면 의심이 계속됩니다. 초록 책상 앞자리로 복귀해 추적을 푸세요.':stage===4?'교수님이 문을 잠갔습니다. 가방을 챙긴 뒤 책상을 수색해 열쇠를 찾으세요.':'';hintTime=stage>=4?5:0;
+ mode='play';$('overlay').classList.add('hidden');$('level').textContent='STAGE '+String(stage).padStart(2,'0')+' · '+STAGE_NAMES[stage];$('pause').textContent='Ⅱ 일시정지';
+}
+function modal(title,msg,btn){$('title').textContent=title;$('message').innerHTML=msg;$('start').textContent=btn;$('overlay').classList.remove('hidden')}
+$('start').onclick=()=>{if(mode==='paused'){mode='play';$('overlay').classList.add('hidden');return}if(mode==='win'){stage=stage<10?stage+1:1}else if(mode==='lose'||mode==='intro')stage=mode==='intro'?1:stage;beginSelected(stage)};
+function pause(){if(mode==='play'){mode='paused';modal('잠깐, 쉬는 시간','작전은 잠시 멈췄어요. 준비되면 이어가세요.','계속하기　→')}else if(mode==='paused'){mode='play';$('overlay').classList.add('hidden')}}$('pause').onclick=pause;
+window.addEventListener('keydown',e=>{if(e.target?.closest?.('input,textarea,button'))return;if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(e.key))e.preventDefault();keys[e.key.toLowerCase()]=true;if(e.key.toLowerCase()==='p'&&!e.repeat)pause()});window.addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);window.addEventListener('blur',()=>{Object.keys(keys).forEach(k=>keys[k]=false);if(mode==='play')pause()});document.querySelectorAll('[data-key]').forEach(b=>{b.onpointerdown=e=>{e.preventDefault();b.setPointerCapture(e.pointerId);keys[b.dataset.key]=true};b.onpointerup=b.onpointercancel=()=>keys[b.dataset.key]=false});
+function rect(x,y,w,h,color){ctx.fillStyle=color;ctx.fillRect(x,y,w,h)}function label(t,x,y,color='#b8c7a2',size=12){ctx.font=`600 ${size}px sans-serif`;ctx.fillStyle=color;ctx.textAlign='center';ctx.fillText(t,x,y)}
+function person(x,y,color){ctx.fillStyle='#101c1660';ctx.beginPath();ctx.ellipse(x,y+12,15,7,0,0,7);ctx.fill();rect(x-10,y-1,20,18,color);ctx.fillStyle='#ead4a5';ctx.beginPath();ctx.arc(x,y-8,9,0,7);ctx.fill();rect(x-9,y-16,18,7,'#26332a');rect(x-8,y+17,6,7,'#16231d');rect(x+2,y+17,6,7,'#16231d')}
+function draw(){rect(0,0,760,560,'#344333');for(let x=0;x<760;x+=40)for(let y=0;y<560;y+=40){ctx.strokeStyle='#d2dfb008';ctx.strokeRect(x,y,40,40)}rect(22,20,716,525,'#657350');rect(34,32,692,501,'#46583b');rect(230,42,300,49,'#203c31');label('경제학개론  ·  오늘도 수업 중',380,72,'#abbf9d',14);rect(25,95,20,70,'#b6ccad');rect(25,290,20,70,'#b6ccad');rect(692,455,45,65,ready()?'#d6fa72':'#718266');label(stage===4&&!unlocked?'LOCK':'EXIT ↗',712,491,ready()?'#243821':'#d2dfbb',10);rect(68,105,65,49,stamp?'#81b869':'#d5d2a1');label(stamp?'출석 완료 ✓':'출석부',101,134,'#2e3e25',11);
+const ph=phase();
+ctx.save();ctx.strokeStyle='#ff9270aa';ctx.fillStyle='#ff77551a';ctx.lineWidth=2;ctx.setLineDash([5,5]);ctx.beginPath();ctx.arc(professor.x,professor.y,professor.radius,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();
+if(ph==='watch'||ph==='warning'){
+ctx.save();ctx.fillStyle=ph==='watch'?'#f8d56d30':'#ffb56616';ctx.strokeStyle=ph==='watch'?'#f8d56d88':'#ffb566';ctx.lineWidth=2;if(ph==='warning')ctx.setLineDash([9,7]);ctx.beginPath();ctx.moveTo(professor.x,professor.y);const [from,to]=visionBounds();ctx.arc(professor.x,professor.y,900,from,to);ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();
+}
+drawMechanics();
+if(!stamp){label('출석 · E 1초',101,171,'#ffe2a0',11);rect(79,181,44,4,'#213b28');rect(79,181,44*stampProgress,4,'#d6fa72')}
+for(const d of desks){rect(d.x+5,d.y+6,d.w,42,'#1c302333');rect(d.x,d.y,d.w,d.h,'#a0a173');rect(d.x+4,d.y+4,d.w-8,5,'#bdbe8c');rect(d.x+20,d.y+13,24,17,'#e0dfb6');rect(d.x+66,d.y+27,8,7,'#6a7852');rect(d.x+16,d.y+46,28,17,'#253e2c');rect(d.x+60,d.y+46,28,17,'#253e2c')}
+if(stage>=6&&ph==='warning'){label('점선 = 시야가 훑을 전체 범위 · '+lookDirection,380,100,'#ffd39e',11)}
+if(usesPursuit()){
+ for(const [index,d] of desks.entries()){const margin=index===refugeDesk?8:0;ctx.save();ctx.fillStyle=pursued?'#d6fa7255':'#d6fa7222';ctx.strokeStyle=pursued?'#d6fa72':'#a4bd7999';ctx.lineWidth=2;ctx.setLineDash([4,3]);ctx.fillRect(d.x+12-margin,d.y+d.h+13-margin,76+margin*2,27+margin*2);ctx.strokeRect(d.x+12-margin,d.y+d.h+13-margin,76+margin*2,27+margin*2);ctx.restore()}
+ label(pursued?'! 추적 중 · 초록 책상 앞자리로 복귀!':'초록 영역 = 책상 앞자리',380,550,pursued?'#ffaf8f':'#c4e397',12);
+}
+if(needsBag()&&!bag){rect(618,437,25,26,'#e8bd75');rect(624,431,13,8,'#e8bd75');label('내 가방 · E 2초',630,425,'#ffdfa2',11);rect(609,470,44,5,'#213b28');rect(609,470,44*bagProgress/2,5,'#e8bd75')}
+if(stage===4){
+ for(let i=0;i<searchSpots.length;i++){
+  const spot=searchSpots[i],done=searched.has(i),active=stamp&&bag&&!hasKey;
+  rect(spot.x-9,spot.y-7,18,14,done?'#75816a':active?'#edc77f':'#7f8866');
+  label(done?(i===keySpot?'✓ 열쇠 발견':spot.name+' · 없음'):spot.name+' ?'+(active?' · E 1초':''),spot.x,spot.y-16,active?'#ffe2a4':'#b8c4a2',10);
+  if(searchIndex===i&&searchProgress>0){rect(spot.x-22,spot.y+17,44,4,'#263622');rect(spot.x-22,spot.y+17,44*searchProgress,4,'#edc77f')}
+ }
+}
+if(needsDoor()&&stamp&&(!needsBag()||bag)&&!door){
+ const locked=stage===4&&!unlocked;
+ const text=locked&&!hasKey?'잠김 · 열쇠를 찾으세요':phase()==='board'?(locked?'안전 · E 해제 0.8초':'안전 · E 열기 1.2초'):'대기 · E를 놓으세요';
+ label(text,638,510,phase()==='board'&&(!locked||hasKey)?'#d6fa72':'#ff9c80',10);
+ rect(688,525,45,4,'#243622');rect(688,525,45*(locked?unlockProgress/.8:doorProgress/1.2),4,'#d6fa72');
+}
+[[122,276],[321,276],[627,366],[477,456],[155,456]].forEach(([x,y])=>person(x,y,'#7b8f77'));person(professor.x,professor.y,ph==='watch'?'#d9b774':'#83938b');if(ph!=='board'){ctx.strokeStyle='#ffe09b';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(professor.x,professor.y-8);ctx.lineTo(professor.x+Math.cos(viewAngle())*22,professor.y-8+Math.sin(viewAngle())*22);ctx.stroke()}label(ph==='board'?'✎ 칠판 보는 중':ph==='warning'?'! '+lookDirection+' 돌아본다':'◉ '+lookDirection+' 감시 중',professor.x,professor.y+80,ph==='board'?'#d9eab8':'#ffe09b',13);const isHidden=hidden();ctx.globalAlpha=isHidden?.45:1;person(p.x,p.y,'#d6fa72');ctx.globalAlpha=1;if(bag){rect(p.x+10,p.y+2,8,13,'#e8bd75')}if(hasKey){label('열쇠 ✓',p.x,p.y+38,'#ffe48a',10)}label(usesPursuit()&&pursued?'추적 중!':usesPursuit()&&atDeskFront()?'수업 듣는 척':isHidden?'숨는 중':'나',p.x,p.y-30,'#e4ff9c',11);label('강의실 302',94,514,'#96a782',10)}
+function update(dt){
+ if(mode!=='play')return;
+ if(introLeft>0){introLeft=Math.max(0,introLeft-dt);return}
+ time-=dt;elapsed+=dt;syncEncounter();syncPatrol();syncAssistant();hintTime=Math.max(0,hintTime-dt);
+ let action=keys.e?actionKind():null;
+ const hide=hidden(),old={...p};
+ const dx=(keys.d||keys.arrowright?1:0)-(keys.a||keys.arrowleft?1:0),dy=(keys.s||keys.arrowdown?1:0)-(keys.w||keys.arrowup?1:0);
+ if(!hide&&!action){
+  const len=Math.hypot(dx,dy)||1,speed=155,nx=p.x+dx/len*speed*dt,ny=p.y+dy/len*speed*dt;
+  const blocked=(x,y)=>desks.some(d=>x>d.x-11&&x<d.x+d.w+11&&y>d.y-12&&y<d.y+d.h+12);
+  if(nx>48&&nx<716&&!blocked(nx,p.y))p.x=nx;if(ny>102&&ny<515&&!blocked(p.x,ny))p.y=ny;
+ }
+ // Re-evaluate after movement so entering an action area cannot bypass detection.
+ action=keys.e?actionKind():null;
+ if(Math.hypot(p.x-professor.x,p.y-professor.y)<=professor.radius){caught('교수님에게 너무 가까이 다가가 들켰습니다.');return}
+ const moved=Math.hypot(p.x-old.x,p.y-old.y)>.01;if(hasNoise()&&moved&&noisyAt()&&elapsed-lastNoiseAt>=3)triggerNoise();
+ const seen=(phase()==='watch'&&inView())||assistantSees();
+ if(seen&&action){const reasons={stamp:'출석부를 처리하다',bag:'가방을 챙기다',search:'열쇠를 찾으려고 책상을 수색하다',unlock:'문 잠금을 풀다가',door:'문을 열다가'};caught(reasons[action]+(assistantSees()?' 조교의 시야에 들어왔습니다.':' 교수님의 시야에 들어왔습니다.'));return}
+ const moving=Math.hypot(p.x-old.x,p.y-old.y)>.01,visible=seen&&!hidden();
+ if(usesPursuit()){
+  if(atDeskFront()&&!action){
+   if(!inDeskFront(desks[refugeDesk],8))refugeDesk=deskFrontIndex();
+   if(pursued)toast('책상 앞자리 복귀! 의심도가 초당 20% 감소합니다.');
+   pursued=false;
+   // Resolve recovery first, even while the professor is looking at this seat.
+   risk=Math.max(0,risk-20*dt);
+  }else{
+   refugeDesk=-1;
+   if(visible&&!pursued){pursued=true;toast((assistantSees()?'조교가':'교수님이')+' 당신을 주시합니다! 초록 책상 앞으로 복귀하세요.')}
+   risk=Math.max(0,Math.min(100,risk+(pursued?22:-20)*dt));
+  }
+ }else{
+  risk=Math.max(0,Math.min(100,risk+(visible?(moving||action?23+stage*5:nearDesk()?0:6):-20)*dt));
+ }
+ if(action==='stamp'){
+  stampProgress=Math.min(1,stampProgress+dt);
+  if(stampProgress>=1){stamp=true;toast(needsBag()?'출석 완료! 오른쪽 아래 내 자리에서 가방을 챙기세요.':usesPursuit()?'출석 완료! 추적 중이면 책상 앞으로 복귀한 뒤 EXIT로 이동하세요.':'출석 완료! 뒷문으로 이동하세요.')}
+ }else if(!stamp)stampProgress=0;
+ if(action==='bag'){
+  bagProgress=Math.min(2,bagProgress+dt);
+  if(bagProgress>=2){bag=true;toast(stage===4?'가방 확보! A·B·C 책상을 E로 수색해 열쇠를 찾으세요.':stage===3?'가방 확보! 문 앞에서 초록 신호에 E를 누르세요.':'가방 확보! 이제 뒷문으로 탈출하세요.')}
+ }else if(!bag)bagProgress=0;
+ if(action==='search'){
+  const i=nearSearch();if(searchIndex!==i){searchIndex=i;searchProgress=0}
+  searchProgress=Math.min(1,searchProgress+dt);
+  if(searchProgress>=1){searched.add(i);searchProgress=0;searchIndex=-1;if(i===keySpot){hasKey=true;toast('열쇠 발견! 문 앞에서 초록 신호에 E로 잠금을 풀고 문을 여세요.')}else toast('빈 책상입니다. 다른 책상을 수색하세요.')}
+ }else{searchProgress=0;searchIndex=-1}
+ if(!keys.e)doorMistake=false;
+ if(action==='unlock'||action==='door'){
+  if(phase()==='board'&&!doorMistake){
+   if(action==='unlock'){unlockProgress=Math.min(.8,unlockProgress+dt);if(unlockProgress>=.8){unlocked=true;toast('잠금 해제! 초록 신호에 E를 1.2초 더 눌러 문을 여세요.')}}
+   else{doorProgress=Math.min(1.2,doorProgress+dt);if(doorProgress>=1.2){door=true;toast('문을 조용히 열었어요! EXIT로 이동하세요.')}}
+  }else{
+   if(action==='unlock')unlockProgress=0;else doorProgress=0;
+   if(!doorMistake){risk=Math.min(100,risk+25);doorMistake=true;toast('삐걱! 의심도 +25%. E를 놓고 초록 신호를 기다리세요.')}
+  }
+ }
+ if(action!=='unlock'&&!unlocked)unlockProgress=0;
+ if(action!=='door'&&!door)doorProgress=0;
+ if(risk>=100||time<=0){mode='lose';modal(time<=0?'수업이 끝나버렸다…':'교수에게 들켜 F학점을 받았습니다.',usesPursuit()&&pursued?'책상 앞으로 돌아가지 않아 의심도가 계속 올라갔습니다.<br>시야를 벗어나거나 SPACE로 숨기만 해서는 추적이 풀리지 않습니다.':'출튀 작전 실패!<br>무작위 방향 예고를 확인하고, 교수님이 칠판을 볼 때 행동하세요.','다시 도전하기　↗')}
+ else if(ready()&&p.x>680&&p.y>450){
+  mode='win';campaignCleared=Math.max(campaignCleared,stage);try{localStorage.setItem('campusCampaign',campaignCleared)}catch{}const score=Math.round(time*100+stage*200);
+  if(score>best){best=score;try{localStorage.setItem('escapeBest',best)}catch{}}
+  $('best').textContent='BEST '+best+'점';
+  modal(stage===10?'최종 강의실 탈출! 출튀의 고수입니다.':usesPursuit()?'교수님의 추적을 피해 탈출 성공!':stage===4?'잠긴 강의실 탈출 성공!':'탈출 성공!','교수님은 아직 눈치채지 못했어요.<br>이번 작전 점수 <b>'+score+'점</b> · 남은 시간 '+time.toFixed(1)+'초',stage===10?'처음부터 다시 도전　↗':'다음 강의실로　↗');
+ }
+}
+function mission(id,text,show,active){$(id).style.display=show?'block':'none';$(id).textContent=text;$(id).classList.toggle('active',!!active)}
+function hud(){
+ hudMechanics();
+ if(usesPursuit()){
+  mission('m1',(stamp?'✓':'①')+'　출석부 처리 · E 1초',true,!stamp);
+  mission('m2',pursued?'!　책상 앞으로 복귀해 추적 풀기':'②　추적을 피해 EXIT로 탈출',true,stamp||pursued);
+  for(const id of ['m3','m4','m5','m6'])mission(id,'',false,false);
+  if(stage===10){mission('m2',(door?'✓':'②')+'　문 조용히 열기 · E 1.2초',true,stamp&&!door);mission('m3','③　추적을 피해 EXIT로 탈출',true,door);mission('m4','!　책상 복귀로 추적 해제',pursued,pursued)}
+  $('action').textContent=pursued?'의심도 +22%/초 · 초록 책상 앞자리로 돌아가세요!':atDeskFront()&&risk>0?'의심도 회복 중 −20%/초 · '+Math.round(risk)+'% · 책상 앞에서 잠시 기다리세요':!stamp?'왼쪽 위 출석부 앞에서 E를 1초간 누르세요':stage===10&&!door?(phase()==='board'?'문 앞에서 E 1.2초 · 안전 '+boardLeft().toFixed(1)+'초':'문 앞에서 초록 신호를 기다리세요'):'출석 완료 · EXIT로 이동하세요';
+  $('warning').textContent=pursued?'⚠ 추적 중! 시야 밖·칠판 시간에도 의심도가 올라갑니다':atDeskFront()?'✓ 추적 해제 · '+(risk>0?'의심도 회복 중 −20%/초':'의심도 0%')+' · 교수 시야 안에서도 회복':phase()==='warning'?'⚠ '+lookDirection+' 방향 · '+Math.max(0,phaseEnds-elapsed).toFixed(1)+'초 후 돌아봅니다!':phase()==='watch'?'◉ '+lookDirection+' 감시 중 · 책상 앞에서는 수업 듣는 척':'✎ 칠판 보는 중 · 시야 예고를 확인하세요';
+  $('warning').style.color=pursued?'#ff896c':atDeskFront()||phase()==='board'?'#d6fa72':'#ffad82';
+  $('status').textContent=pursued?'SPACE로 숨거나 멈춰도 추적이 유지됩니다. 초록 책상 앞으로!':atDeskFront()?'책상 앞자리입니다. 의심도 −20%/초 · 현재 '+Math.round(risk)+'%. 영역을 벗어나 시야에 잡히면 다시 추적됩니다.':hintTime>0?hint:'출석 중 발각과 교수 근접은 즉사. 일반 시야 노출은 지속 추적을 시작합니다.';
+  return;
+ }
+
+ mission('m1',(stamp?'✓':'①')+'　출석부 처리 · E 1초',true,!stamp);
+ mission('m2',stage===1?'②　뒷문으로 탈출하기':(bag?'✓':'②')+'　내 가방 챙기기 · E 2초',true,stamp&&(stage===1||!bag));
+ mission('m3',stage===4?(hasKey?'✓':'③')+'　책상 수색 · 열쇠 찾기':stage===2?'③　뒷문으로 탈출하기':(door?'✓':'③')+'　문 조용히 열기 · E 1.2초',stage>=2,bag&&(stage===4?!hasKey:!door));
+ mission('m4',stage===4?(unlocked?'✓':'④')+'　잠금 해제 · E 0.8초':'④　EXIT로 탈출하기',stage>=3,stage===4?hasKey&&!unlocked:door);
+ mission('m5',(door?'✓':'⑤')+'　문 조용히 열기 · E 1.2초',stage===4,unlocked&&!door);
+ mission('m6','⑥　EXIT로 탈출하기',stage===4,door);
+ const doorHint=phase()==='board'?'● 안전 '+boardLeft().toFixed(1)+'초 · '+(stage===4&&!unlocked?'E 0.8초로 잠금 해제':'E 1.2초로 문 열기'):'● 대기 · 교수님이 칠판을 볼 때 문 앞에서 E';
+ $('action').textContent=!stamp?'왼쪽 위 출석부 앞에서 E를 1초간 누르세요':stage===1?'출석 완료 · EXIT로 이동하세요':!bag?'오른쪽 아래 가방 앞에서 E를 2초간 누르세요':stage===4&&!hasKey?'A·B·C 책상 앞에서 E 1초 · 열쇠는 매번 다른 곳에 있습니다':stage>=3&&!door?doorHint:'EXIT로 이동하세요';
+ $('warning').textContent=phase()==='warning'?'⚠ '+lookDirection+' 방향 · '+Math.max(0,phaseEnds-elapsed).toFixed(1)+'초 후 돌아봅니다!':phase()==='watch'?'◉ '+lookDirection+' 감시 중 · 행동 발각 시 즉사':'✎ 칠판 보는 중 · 돌아보는 간격은 무작위';
+ $('warning').style.color=phase()==='board'?'#d6fa72':'#ffad82';
+ $('status').textContent=hintTime>0?hint:risk>65?'위험해요! 책상 근처에서 숨으세요.':phase()==='watch'?lookDirection+' 감시 중! 행동이 보이면 즉사.':phase()==='warning'?lookDirection+' 방향을 곧 돌아봅니다. 점선 시야를 피하세요.':'지금이 기회! 교수님 주변 붉은 원은 접근 금지.';
+}
+function frame(t){const dt=Math.min((t-last)/1000,.04);last=t;if(mode==='play'){if(rankedRun)advanceRanked(dt);else update(dt)}draw();$('time').textContent=Math.max(0,time).toFixed(1);$('risk').textContent=Math.round(risk)+'%';$('meter').style.width=risk+'%';$('meter').style.background=risk>65?'#ff8970':'#d6fa72';hud();requestAnimationFrame(frame)}requestAnimationFrame(frame);
+
+// ONLINE_RANKING_ADAPTER
+let rankedRun=null,rankedAccumulator=0,selectedStage=1,rankingRequest=0,startRequest=0,playMode='normal',rankingMode='fixed';
+const inputNames=['w','s','a','d',' ','e'];
+function inputMask(){return ((keys.w||keys.arrowup)?1:0)|((keys.s||keys.arrowdown)?2:0)|((keys.a||keys.arrowleft)?4:0)|((keys.d||keys.arrowright)?8:0)|(keys[' ']?16:0)|(keys.e?32:0)}
+function canRank(){return typeof fetch==='function'&&typeof location!=='undefined'&&location.protocol!=='file:'}
+function practice(){$('start').disabled=false;rankedRun=null;gameplayRandom=Math.random;reset();$('score-form').hidden=true;$('run-kind').textContent='일반 모드 · 매번 무작위 · 순위 등록 없음'}
+function beginSelected(nextStage){return beginRanked(nextStage,playMode)}
+async function beginRanked(nextStage,competition=rankingMode){
+ const requestedStage=nextStage,requestId=++startRequest;stage=requestedStage;
+ playMode=competition;$('play-mode').value=competition;
+ if(competition==='normal'||!canRank()){practice();return}
+ mode='preparing';$('start').disabled=true;$('score-form').hidden=true;
+ try{
+  const response=await fetch('/api/runs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({stage:requestedStage,mode:competition}),credentials:'same-origin'}),data=await response.json();
+  if(requestId!==startRequest)return;
+  if(!response.ok)throw Error(data.error||'연결 실패');
+  stage=requestedStage;
+  rankedRun={id:data.id,stage,competition,seed:data.seed,steps:0,inputs:[],lastMask:0,completed:false};rankedAccumulator=0;gameplayRandom=seededRandom(data.seed);reset();$('run-kind').textContent=competition==='daily'?'● 오늘의 출튀 '+data.date+' · 모두 같은 패턴':'● 기록 모드 · 단계별 고정 패턴 · 서버 검증';
+ }catch(error){if(requestId!==startRequest)return;practice();toast('순위 서버 연결 실패: 연습 모드로 시작합니다.');$('run-kind').textContent='순위표 연결 불가 · 연습 모드 (기록 등록 안 됨)'}
+ finally{if(requestId===startRequest)$('start').disabled=false}
+}
+function advanceRanked(dt){
+ rankedAccumulator+=dt;
+ while(rankedAccumulator>=1/60&&mode==='play'){
+  const mask=inputMask();if(mask!==rankedRun.lastMask){rankedRun.inputs.push([rankedRun.steps,mask]);rankedRun.lastMask=mask}
+  update(1/60);rankedRun.steps++;rankedAccumulator-=1/60;
+  if(mode==='win'&&!rankedRun.completed){rankedRun.completed=true;$('score-form').hidden=false;$('score-status').textContent='클리어! 닉네임을 입력해 이 단계의 기록을 등록하세요.';try{$('nickname').value=localStorage.getItem('campusNickname')||''}catch{}$('submit-score').disabled=false}
+ }
+}
+async function loadRankings(which=selectedStage){
+ selectedStage=which;const request=++rankingRequest;
+ document.querySelectorAll('[data-rank-stage]').forEach(button=>{button.classList.toggle('selected',Number(button.dataset.rankStage)===which);button.setAttribute('aria-pressed',String(Number(button.dataset.rankStage)===which))});
+ $('rank-heading').textContent=which+'단계 TOP 20 · '+(rankingMode==='daily'?'오늘의 출튀':'고정 패턴');$('rank-stage-play').textContent=which+'단계 바로 도전 ↗';$('rank-rows').replaceChildren();$('rank-message').textContent=canRank()?'기록을 불러오는 중…':'오프라인 파일은 연습 모드입니다. 온라인 사이트에서 순위를 등록할 수 있어요.';
+ $('my-rank').textContent='';if(!canRank())return;
+ try{
+  const response=await fetch('/api/rankings?stage='+which+'&mode='+rankingMode,{credentials:'same-origin',cache:'no-store'}),data=await response.json();if(!response.ok)throw Error(data.error||'기록을 불러오지 못했어요.');if(request!==rankingRequest)return;
+  data.rows.forEach((row,index)=>{const tr=document.createElement('tr');[String(index+1),row.nickname,Number(row.score).toLocaleString('ko-KR')+'점',(row.remaining/1000).toFixed(1)+'초',new Date(row.created).toLocaleDateString('ko-KR')].forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.append(td)});$('rank-rows').append(tr)});
+  $('rank-message').textContent=data.rows.length?'동점은 먼저 등록한 기록이 앞섭니다.':'아직 기록이 없어요. 이 단계의 첫 기록을 남겨보세요!';
+  $('my-rank').textContent=data.mine?'내 최고 기록 · '+data.mine.rank+'위 / '+Number(data.mine.score).toLocaleString('ko-KR')+'점':'이 브라우저에서 등록한 기록이 없습니다.';
+ }catch(error){if(request===rankingRequest)$('rank-message').textContent=error.message}
+}
+async function submitScore(event){
+ event.preventDefault();if(!rankedRun?.completed)return;
+ const run=rankedRun,nickname=$('nickname').value.trim();$('submit-score').disabled=true;$('score-status').textContent='플레이 기록을 검증하고 있어요…';
+ try{
+  const response=await fetch('/api/scores',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'same-origin',body:JSON.stringify({id:run.id,nickname,steps:run.steps,inputs:run.inputs})}),data=await response.json();if(!response.ok)throw Error(data.error||'등록 실패');
+  $('score-status').textContent=data.message;try{localStorage.setItem('campusNickname',nickname)}catch{}rankingMode=run.competition;$('rank-mode').value=rankingMode;loadRankings(run.stage);
+ }catch(error){$('score-status').textContent=error.message;$('submit-score').disabled=false}
+}
+function initRankings(){
+ $('score-form').addEventListener('submit',submitScore);
+ document.querySelectorAll('[data-rank-stage]').forEach(button=>button.addEventListener('click',()=>{if(mode==='play')pause();loadRankings(Number(button.dataset.rankStage))}));
+ $('refresh-ranks').onclick=()=>loadRankings();$('rank-stage-play').onclick=()=>beginRanked(selectedStage,rankingMode);
+ $('rank-mode').onchange=()=>{rankingMode=$('rank-mode').value;if(mode==='play')pause();loadRankings()};
+ $('play-mode').onchange=()=>{playMode=$('play-mode').value;if(mode==='play'){pause();toast('선택한 모드는 다음 도전부터 적용됩니다.')}};
+ $('continue-campaign').onclick=()=>{playMode='normal';beginSelected(Math.min(10,campaignCleared+1))};
+ loadRankings(1);
+}
+if(typeof document.createElement==='function')initRankings();
+
+</script></html>
